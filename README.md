@@ -37,7 +37,7 @@ Finally, launch R and build features.
 
 > source('ls.R')
 > allData <- readData()
-> dataWithFeatures <- mclapply(alld, buildFeatsAndFuture, mc.cores=10) # set mc.cores to number of cores you want to use
+> dataWithFeatures <- mclapply(allData, buildFeatsAndFuture, mc.cores=10) # set mc.cores to number of cores you want to use
 ```
 
 Feature building takes a long time; on my desktop it's on the order of 2 hours. Once complete I recommend saving a copy of the data and features in case you lose your R session:
