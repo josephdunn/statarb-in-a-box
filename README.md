@@ -35,6 +35,8 @@ Finally, launch R and build features.
 
 ```R
 
+R
+
 > source('ls.R')
 > allData <- readData()
 > dataWithFeatures <- mclapply(allData, buildFeatsAndFuture, mc.cores=10) # set mc.cores to number of cores you want to use
@@ -42,31 +44,31 @@ Finally, launch R and build features.
 
 Feature building takes a long time; on my desktop it's on the order of 2 hours. Once complete I recommend saving a copy of the data and features in case you lose your R session:
 
-```
+```R
 > save(dataWithFeatures, file='dataWithFeatures.RData')
 ```
 
 Then run a backtest.
 
-```
+```R
 btres <- bt(dataWithFeatures)
 ```
 
 `btres` will be a day-by-day list of `data.frame`s that you can combine by `rbind`ing like so:
 
-```
+```R
 > btres <- do.call(rbind, btres)
 ```
 
 Or you can use the included utility function `btResToXTS` to get an `xts` object containing returns by close time:
 
-```
+```R
 > btres.xts <- btresToXTS(btres)
 ```
 
 Which you can plot or analyze in other ways (e.g. in [PerformanceAnalytics](https://cran.r-project.org/web/packages/PerformanceAnalytics/index.html)). Finally, you can make a copy of your backtest results with commissions applied. The following returns a `btres`-style list with 10 bps of commissions applied *in toto* to each entry/exit pair:
 
-```
+```R
 btres.withComms <- applyComms(btres, 0.001)
 ```
 
