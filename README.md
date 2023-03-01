@@ -86,7 +86,11 @@ Lots of ways. First see above regarding what it doesn't do. Then:
 
 * Live trading
 
-* Code cleanup: I've hardcoded various bits, e.g. column counts and indexes. Really, all feature columns should have names prefixed with `feat.` so colnames can be grepped over to get a vector of column indexes--similar to how `pred.` and `close.` column name prefixes are used. Also, loops are yucky; it would be trivial to pre-compute train/test periods and then `lapply` (or `mclapply`!) over that to get backtest results. 
+* Code cleanup: I've hardcoded various bits, e.g. column counts and indexes. Really, all feature columns should have names prefixed with `feat.` so colnames can be grepped over to get a vector of column indexes--similar to how the `pred.` and `close.` column name prefixes are used. Also, loops are yucky; it would be trivial to pre-compute train/test periods and then `lapply` (or `mclapply`!) over that to get backtest results.
+
+* Turnover and volatility optimization
+
+* The downloader script can detect missing data at the end of local data, but it cannot detect data gaps.
 
 ## License
 
